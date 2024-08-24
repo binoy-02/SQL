@@ -1,0 +1,92 @@
+create table Student
+(st_id varchar2(5),
+st_name varchar2(10),
+age number);
+
+Description of a table - desc
+
+desc Student;
+
+see content -- SELECT
+
+SELECT * 
+FROM Student;
+
+insert data -- INSERT
+
+INSERT INTO Student values
+('s1','alen',22);
+INSERT INTO Student values
+('s2','Akhil',20);
+INSERT INTO Student values
+('s3','Aswin',23);
+
+SELECT * 
+FROM Student;
+
+select st_id from Student;
+select st_name,age from Student;
+
+select *  from Student where age>22;
+select st_name  from Student where st_id='s1';
+
+DELETE FROM Student where st_name='alen';
+
+DELETE FROM Student;
+select * from Student;
+
+DROP TABLE Student;
+
+
+create table tchr
+(t_id varchar2(5) check(t_id like 'T%'),
+t_gndr varchar2(4) check (t_gndr in('M','F','TG')),
+t_name varchar2(10),
+age number);
+
+insert into tchr
+values('T101','M','Ann',45);
+insert into tchr
+values('T102','F','Ann',null);
+
+
+create table tchr
+(t_id varchar2(5) not null check(t_id like 'T%'),
+t_gndr varchar2(4) not null check (t_gndr in('M','F','TG')),
+t_name varchar2(10) not null ,
+age number not null);
+
+CREATE TABLE Stu(
+s_id varchar2(5) not null check(s_id like 'S%'),
+s_name varchar2(10) not null,
+s_course varchar2(10) default 'mca'  check(s_course IN('msw','msc','mba','mhrm','me','mca')) ,
+age number
+);
+
+insert into Stu(s_id,s_name,age) values('S101','Sinan',23);
+insert into Stu(s_id,s_name,age) values('S102','Linan',22);
+insert into Stu(s_id,s_name,s_course,age) values('S103','sahil','mba',22);
+
+PRIMARY KEY
+
+CREATE TABLE Stu(
+s_id varchar2(5)  primary key not null check(s_id like 'S%'),
+s_name varchar2(10) not null,
+s_course varchar2(10) default 'mca'  check(s_course IN('msw','msc','mba','mhrm','me','mca')) ,
+age number
+);
+
+FOREIGN KEY
+
+CREATE TABLE Book(
+b_id varchar2(5)  primary key not null check(b_id like 'B%'),
+b_name varchar2(10) not null,
+s_id varchar2(5),
+foreign key(s_id)  references Stu(s_id)
+);
+
+insert into book values('B101','DBMS','S101');
+insert into book values('B102','CPrmn','S102');
+insert into book values('B103','DBMS','S103');
+insert into book values('B104','DM','S104');
+
