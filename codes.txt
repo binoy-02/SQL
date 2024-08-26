@@ -90,3 +90,15 @@ insert into book values('B102','CPrmn','S102');
 insert into book values('B103','DBMS','S103');
 insert into book values('B104','DM','S104');
 
+rename stu to student;
+
+alter table Student
+rename column age to s_age ;
+
+alter table Student
+add(s_gndr varchar2(3));
+
+alter table Student
+remove column s_age;
+
+
