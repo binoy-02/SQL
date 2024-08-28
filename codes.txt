@@ -99,6 +99,29 @@ alter table Student
 add(s_gndr varchar2(3));
 
 alter table Student
-remove column s_age;
+drop column s_age;
+
+alter table Student
+modify s_gndr varchar2(10);
+
+alter table Student 
+add s_age varchar2(10);
+
+update Student
+set s_gndr='male'
+where s_id='S101';
+
+update Student
+set s_gndr='male'
+where s_id like'S%';
+
+update student 
+set s_age=s_age+2;
+
+update Student 
+set s_age='24'
+where s_id='S104';
+
+
 
 
